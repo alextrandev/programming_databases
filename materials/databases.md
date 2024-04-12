@@ -75,11 +75,15 @@ create table book(
 show create table book;
 drop table book;
 
+### add row in to table
+
 insert into person (id, firstname, lastname, age) values (1, 'Matt', 'River', 20);
 insert into person (id, age, lastname, firstname) values (2, 25, 'River', 'Mary');
 insert into person values (1, 'Matt', 'Jones', 30);
 insert into person (id, firstname, lastname) values (4, 'Vera', 'Smith');
 insert into person values (5, 'Arthur', 'Harris', null);
+
+### select from table
 
 select columnlist from tableList where criteria group by columnOrComputedValue having filterCriteria order by sortingCriteria;
 select * from person;
@@ -90,4 +94,5 @@ select lastname, firstname from person;
 select distinct lastname,firstname from person order by lastname asc, firstname asc;
 
 update person set age=10 where id=5;
+
 ```
