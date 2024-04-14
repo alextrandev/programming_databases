@@ -36,7 +36,7 @@ insert into person values (5, 'Arthur', 'Harris', null);
 
 
 select * from person;
-select database();
+select database(); -- show current database
 select @@PORT;
 select @@hostname;
 select lastname, firstname from person;
