@@ -1,10 +1,10 @@
 /* select database */
 use dogdb;
----------------------
+-- ------------------
 
 /* deleting the sample rows */
 truncate dog;
-------------------------------
+-- ---------------------------
 
 /* insert datas */
 
@@ -18,7 +18,7 @@ insert into dog (number, name, birth, breed, weightKg) values
 (3,	'Spot'                   , 2017, 'spaniel'          ,	15),
 (2,	'Barky'                  , 2018, 'bulldog'          ,	25),
 (4,	'Grand Duke of S.Q.L'    , 2000, 'lapdog'           ,	1 );
----------------------------------------------------------------
+-- -----------------------------------------------------------
 
 /* select data */
 
@@ -34,5 +34,14 @@ select * from dog where breed='spaniel';
 select * from dog where breed='lapdog';
 
 /* update data */
+update dog set breed='datahound', weightKg=7 where number=3;
+update dog set breed='muddypaw', birth=1990 where number=4;
+update dog set breed='watchdog', name='Barky', birth=2012 where number=3;
+update dog set breed='furry tail-wagger', name='Spot', birth=2010 where number=1;
 
 /* delete data */
+delete from dog where number=5;
+delete from dog where number=1;
+delete from dog where weightKg=10;
+delete from dog where name='Grand Duke of S.Q.L' or name='Canine The III';
+delete from dog where weightKg=5 or weightKg=45 or birth=1990;
