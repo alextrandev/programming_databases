@@ -7,7 +7,6 @@ truncate dog;
 -- ---------------------------
 
 /* insert datas */
-
 -- using one statement and format with spaces so it looks nice
 -- make no different when running the statement
 insert into dog (number, name, birth, breed, weightKg) values 
@@ -21,7 +20,6 @@ insert into dog (number, name, birth, breed, weightKg) values
 -- -----------------------------------------------------------
 
 /* select data */
-
 -- select all columns
 select * from dog;
 
@@ -32,12 +30,14 @@ select number, weightKg, breed from dog;
 select * from dog where breed='bulldog';
 select * from dog where breed='spaniel';
 select * from dog where breed='lapdog';
+-- -------------------------------------
 
 /* update data */
 update dog set breed='datahound', weightKg=7 where number=3;
 update dog set breed='muddypaw', birth=1990 where number=4;
 update dog set breed='watchdog', name='Barky', birth=2012 where number=3;
 update dog set breed='furry tail-wagger', name='Spot', birth=2010 where number=1;
+-- ------------------------------------------------------------------------------
 
 /* delete data */
 delete from dog where number=5;
@@ -45,3 +45,4 @@ delete from dog where number=1;
 delete from dog where weightKg=10;
 delete from dog where name='Grand Duke of S.Q.L' or name='Canine The III';
 delete from dog where weightKg=5 or weightKg=45 or birth=1990;
+-- -----------------------------------------------------------------------
