@@ -3,7 +3,7 @@
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const {getAll, getOne} = require('./databaseFunctions');
+const {getAll, getOne, add} = require('./databaseFunctions');
 const {port, host} = require('./config.json'); //server host and port, not db
 const RESOURCE = 'employees';
 const PRIMARY_KEY = 'employeeId';

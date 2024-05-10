@@ -28,7 +28,7 @@ const getAll = async () => {
     console.log(err);
     return err.message;
   } finally {
-    if (conn) conn.end();
+    conn?.end();
   }
 }
 
@@ -48,9 +48,36 @@ const getOne = async (id) => {
     return err.message;
 
   } finally {
-    if (conn) conn.end();
+    conn?.end();
 
   }
 }
 
-module.exports = {getAll, getOne}; //export function
+const add = async (newEmployee) => {
+  let conn;
+
+  try {
+    conn = await mariadb.createConnection(config);
+    const stmt = 'insert into employee values(?,?,?,?,?)';
+    const parameters = [
+      +newEmployee.employeeID,
+      newEmployee.firstname,
+      newEmployee.lastname,
+      newEmployee.department,
+      +newEmployee.salary
+    ]; // the plus sign is to convert value into number
+    const results = await conn.query(stmt, parameters);
+    console.log(results);
+    return {rowsChanged:results.affectedRows}
+
+  } catch (err) {
+    console.log(err);
+    return err.message;
+
+  } finally {
+    conn?.end();
+
+  }
+}
+
+module.exports = {getAll, getOne, add}; //export function
