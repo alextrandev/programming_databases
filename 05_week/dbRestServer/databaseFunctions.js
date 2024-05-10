@@ -11,12 +11,17 @@ const config = {
   allowPublicKeyRetrieval: true
 }
 
+const adapt = item => Object.assign(item, {
+  employeeId: +item.employeeID,
+  salary: +item.salary,
+}); // arrow function
+
 const getAll = async () => {
   let conn;
   
   try {
     conn = await mariadb.createConnection(config);
-    return await conn.query('select * from employee');
+    return await conn.query('select * from employee').map(item=>adapt(item));
   } catch (err) {
     console.log(err);
     return err.message;
