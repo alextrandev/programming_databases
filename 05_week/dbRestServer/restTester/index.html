@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest Tester</title>
+  <script src="restTester.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Rest Tester</h1>
+
+    <p id="uri">
+      <label>Resource URI:  <input type="text" id="urifield"></label>
+    </p>
+
+    <fieldset id="methods">
+      <legend>Choose:</legend>
+      <label><input type="radio" name="method" value="GET" id="get">GET</label>
+      <label><input type="radio" name="method" value="GET" id="get">POST</label>
+      <label><input type="radio" name="method" value="GET" id="get">PUT</label>
+      <label><input type="radio" name="method" value="GET" id="get">DELETE</label>
+    </fieldset>
+
+    <h2>JSON</h2>
+    <div>
+      <textarea id="jsonarea" cols="50" rows="10"></textarea>
+    </div>
+    <button type="submit" id="submit">Submit</button>
+
+    <h2>Result</h2>
+    <pre id="messagearea"></pre>
+  </main>
+</body>
+</html>
