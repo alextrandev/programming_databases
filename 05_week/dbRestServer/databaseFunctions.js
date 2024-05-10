@@ -21,7 +21,8 @@ const getAll = async () => {
   
   try {
     conn = await mariadb.createConnection(config);
-    return await conn.query('select * from employee').map(item=>adapt(item));
+    const results = await conn.query('select * from employee');
+    return results.map(item => adapt(item));
   } catch (err) {
     console.log(err);
     return err.message;
