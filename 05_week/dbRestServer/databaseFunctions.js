@@ -80,4 +80,50 @@ const add = async (newEmployee) => {
   }
 }
 
-module.exports = {getAll, getOne, add}; //export function
+const update = async (newEmployee) => {
+  let conn;
+
+  try {
+    conn = await mariadb.createConnection(config);
+    const stmt = 'update employee set firstname=?, lastname=?, department=?, salary=? where employeeID=?';
+    const parameters = [
+      newEmployee.firstname,
+      newEmployee.lastname,
+      newEmployee.department,
+      +newEmployee.salary,
+      +newEmployee.employeeID
+    ]; // the plus sign is to convert value into number
+    const results = await conn.query(stmt, parameters);
+    console.log(results);
+    return {rowsChanged:results.affectedRows}
+
+  } catch (err) {
+    console.log(err);
+    return err.message;
+
+  } finally {
+    conn?.end();
+
+  }
+}
+
+const remove = async (id) => {
+  let conn;
+  
+  try {
+    conn = await mariadb.createConnection(config);
+    const stmt = 'delete from employee where employeeID=?';
+    const results = await conn.query(stmt, [id]);
+    return {rowsChanged:results.affectedRows}
+
+  } catch (err) {
+    console.log(err);
+    return err.message;
+
+  } finally {
+    conn?.end();
+
+  }
+}
+
+module.exports = {getAll, getOne, add, update, remove}; //export function
